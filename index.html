@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shreeyans Arora</title>
+  <meta name="description" content="Shreeyans Arora: undergraduate student researching interpretability, AI safety, and low-resource languages. Looking for research internships and fellowships.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="top">
+  <div class="inner">
+    <span class="brand">Shreeyans Arora</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#auditkit">AuditKIT</a>
+      <a href="#software">Software</a>
+      <a href="#experience">Experience</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+<h1>Shreeyans Arora</h1>
+<p class="desc">
+  B.Tech student, Computer Science and Engineering,
+  <a href="https://iiitn.ac.in">Indian Institute of Information Technology, Nagpur</a>
+</p>
+
+<div class="profile">
+  <img src="profile.jpg" alt="Shreeyans Arora">
+  <p>Delhi, India<br>
+  <a href="mailto:shreeyans1298@gmail.com">shreeyans1298@gmail.com</a></p>
+</div>
+
+<section id="about">
+  <p>
+    I am a final-year B.Tech student at IIIT Nagpur (class of 2027). I am interested in understanding how
+    language models work internally and in making them reliable and safe. My work so far covers mechanistic
+    interpretability, AI safety (especially chain-of-thought faithfulness), and low-resource languages.
+  </p>
+  <p>
+    I am currently a research mentee at the Agyeya workshop under
+    <a href="https://pulkitverma.net/">Dr. Pulkit Verma</a>, working on safety in task and motion planning for
+    robotic devices. I also work with <a href="https://lexsi.ai">Lexsi Labs</a> (Pratinav Seth) on AI safety
+    and with MBZUAI (Dr. Utkarsh Mall) on weather forecasting.
+  </p>
+  <div class="highlight">
+    <b>I am looking for a research internship or fellowship.</b>
+    If you work on any of the topics below, please get in touch at
+    <a href="mailto:shreeyans1298@gmail.com">shreeyans1298@gmail.com</a>.
+  </div>
+  <p>
+    <a href="newresume.pdf">CV</a> ·
+    <a href="https://github.com/shreeyans2808">GitHub</a> ·
+    <a href="https://linkedin.com/in/shreeyansarora">LinkedIn</a> ·
+    <a href="https://openreview.net/pdf?id=25nCvWm2yy">OpenReview</a> ·
+    <a href="https://arxiv.org/abs/2610.22511">arXiv</a>
+  </p>
+</section>
+
+<div class="clear"></div>
+
+<section id="news">
+  <h2>News</h2>
+  <table class="news">
+    <tr><th>Oct 2026</th><td>AuditKIT is on arXiv: <a href="https://arxiv.org/abs/2610.22511">paper</a> and <a href="https://github.com/Lexsi-Labs/AuditKIT">code</a>.</td></tr>
+    <tr><th>Sep 2026</th><td>"Cited but Not Consulted" accepted at the EMNLP 2026 Workshop NLLP and the NeurIPS Workshop TAE.</td></tr>
+    <tr><th>Sep 2026</th><td>Started a three-month research mentorship at the Agyeya workshop under Dr. Pulkit Verma.</td></tr>
+    <tr><th>2026</th><td>Rainfall nowcasting work with MBZUAI submitted to CVPR.</td></tr>
+  </table>
+</section>
+
+<section id="research">
+  <h2>Research</h2>
+
+  <h3>Topics of interest</h3>
+  <ul>
+    <li><b>Mechanistic interpretability and circuit discovery:</b> activation patching, necessity and sufficiency, probing, logit lens.</li>
+    <li><b>Efficient inference:</b> low-rank structure of attention and KV-cache compression.</li>
+    <li><b>Chain-of-thought faithfulness and LLM auditing:</b> causal interventions, LLM-as-a-judge, preference optimization, AuditKIT.</li>
+    <li><b>Safe robotics:</b> safety in task and motion planning.</li>
+    <li><b>Weather forecasting:</b> spatiotemporal deep learning and evaluation metrics for rainfall nowcasting.</li>
+    <li><b>Low-resource and Indic languages:</b> datasets, semantic representations, knowledge distillation.</li>
+  </ul>
+
+  <h3>Mechanistic interpretability</h3>
+  <p class="topic-note">Activation patching, circuit discovery, probing, logit lens, SAEs and transcoders, post-hoc explanations (LIME, SHAP).</p>
+  <div class="entry">
+    <div class="title">Circuit discovery for the IOI task on Llama 3.2 1B</div>
+    <div>
+      A hand-written pipeline using layer-by-layer and token-by-token activation patching, without TransformerLens.
+      It found a candidate circuit of 7 MLP layers and 10 attention heads out of 80 components; the necessity
+      intervention cut the logit-difference score from 5.39 to 0.50. Comparisons with matched random baselines
+      showed a gap between necessity and sufficiency, and the layer-level analysis reproduced across three seeds.
+      <a href="https://github.com/shreeyans2808/Llama_ioi_Circuit_Discovery">Code</a>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="title">Architectural determinants of KV-cache compressibility in transformer language models</div>
+    <div>
+      SVD-based low-rank approximations of Key/Value projections across eight language models, used to find how far
+      the KV cache can be compressed without retraining. QK-norm and grouped-query attention let models keep only
+      24–35% of hidden-state width with no accuracy loss, and compressed caches transferred in agentic handoffs.
+    </div>
+  </div>
+
+  <h3>AI safety and faithfulness</h3>
+  <p class="topic-note">Chain-of-thought faithfulness, LLM-as-a-judge, agentic safety, sycophancy, causal intervention, prompt injection.</p>
+  <div class="entry">
+    <div class="title">Chain-of-thought faithfulness in financial LLMs <span class="meta">(Lexsi Labs, ongoing)</span></div>
+    <div>
+      Auditing five models by comparing internal signals (linear probes, top-k logit-lens tracking, elicited
+      probabilities, an independent judge) with their generated explanations. I also developed and evaluated
+      IV-DPO and CF-DPO preference-optimization pipelines to improve internal-verbal alignment.
+    </div>
+  </div>
+  <div class="entry">
+    <div class="title">Legal chain-of-thought faithfulness</div>
+    <div>
+      A counterfactual audit of whether models consult the sources they cite. See
+      <a href="#publications">"Cited but Not Consulted"</a>.
+    </div>
+  </div>
+
+  <h3>Safe robotics</h3>
+  <p class="topic-note">Task and motion planning, safety in robotic devices.</p>
+  <div class="entry">
+    <div class="title">Agyeya workshop <span class="meta">(ongoing, mentor: Dr. Pulkit Verma)</span></div>
+    <div>Safety in task and motion planning for robotic devices.</div>
+  </div>
+
+  <h3>Earth science and forecasting</h3>
+  <div class="entry">
+    <div class="title">Rainfall nowcasting <span class="meta">(MBZUAI, with Dr. Utkarsh Mall; submitted to CVPR)</span></div>
+    <div>
+      Short-term weather prediction over the Indian subcontinent using INSAT 3D-R satellite data,
+      including a new metric for loss at long lead times.
+    </div>
+  </div>
+
+  <h3>Other interests</h3>
+  <ul>
+    <li><b>Low-resource and Indic languages:</b> dataset availability, semantic representation learning, knowledge distillation.</li>
+    <li><b>Optimization and training dynamics:</b> parameter-efficient fine-tuning (PEFT/QLoRA), causal discovery, weight initialization.</li>
+  </ul>
+</section>
+
+<section id="publications">
+  <h2>Publications</h2>
+  <div class="entry">
+    <div class="title">AuditKIT</div>
+    <div class="meta">Lexsi Labs · 2026</div>
+    <div><a href="https://arxiv.org/abs/2610.22511">arXiv</a> · <a href="https://github.com/Lexsi-Labs/AuditKIT">Code</a></div>
+  </div>
+  <div class="entry">
+    <div class="title">Cited but Not Consulted: A Counterfactual Audit of Legal Chain-of-Thought Faithfulness</div>
+    <div class="meta">Saisab Sadhu, <b>Shreeyans Arora</b>, Pratinav Seth</div>
+    <div class="meta">EMNLP 2026 Workshop NLLP; NeurIPS 2026 Workshop TAE</div>
+    <div><a href="https://openreview.net/pdf?id=25nCvWm2yy">OpenReview</a></div>
+  </div>
+</section>
+
+<section id="auditkit">
+  <h2>AuditKIT</h2>
+  <p>
+    AuditKIT is an AI safety auditing toolkit for evaluating language models, built at Lexsi Labs and
+    described in an arXiv paper.
+  </p>
+  <p><a href="https://arxiv.org/abs/2610.22511">Paper</a> · <a href="https://github.com/Lexsi-Labs/AuditKIT">Code</a></p>
+</section>
+
+<section id="software">
+  <h2>Software Projects</h2>
+
+  <div class="entry">
+    <div class="title">Smudge</div>
+    <div>
+      A Chrome extension (Manifest V3) that adds sticky notes, text quoting and a drawing/laser-pointer overlay
+      to any webpage. Annotations are stored on a Postgres-backed server and tied to your Google account, so they
+      reappear on your next visit. Built with TypeScript, Express and Postgres.
+      <a href="https://chromewebstore.google.com/detail/smudge/lkpipomjogejidoeaamnnmpmdagfehfm">Chrome Web Store</a> ·
+      <a href="https://github.com/shreeyans2808/Smudge">Code</a>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="title">Aksharsa</div>
+    <div>
+      A long-form reading and writing platform for deliberate reading. Users publish essays and stories, annotate
+      passages, comment on specific paragraphs, and join private reading clubs. Built with Next.js, React, Prisma
+      and NextAuth.
+      <a href="https://github.com/shreeyans2808/aksharsa">Code</a>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <h2>Beyond Research</h2>
+  <p>Outside work I enjoy sports (football, volleyball, cricket), travelling, and partying.</p>
+  <img class="center" src="travel.jpg" alt="Shreeyans at Mehrangarh Fort, Jodhpur">
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <table class="news">
+    <tr><th>Sep 2026 – now</th><td><b>Agyeya Workshop</b>, research mentee under Dr. Pulkit Verma.</td></tr>
+    <tr><th>Jun 2026 – now</th><td><b>Lexsi Labs</b>, AI safety researcher under Pratinav Seth.</td></tr>
+    <tr><th>Jan 2026 – now</th><td><b>MBZUAI</b>, research intern under Dr. Utkarsh Mall (remote).</td></tr>
+    <tr><th>Nov 2025 – Feb 2026</th><td><b>MentorBox.ai</b>, AI engineering intern: LLM pipelines for animation generation and knowledge-graph extraction.</td></tr>
+    <tr><th>Apr – Aug 2025</th><td><b>QuickIntell</b>, AI engineering intern: tree-based RAG over 500+ industrial documents.</td></tr>
+    <tr><th>Feb – Apr 2025</th><td><b>StartCoding</b>, AI engineering intern: multimodal web-to-video RAG pipeline.</td></tr>
+    <tr><th>Nov 2024 – Feb 2025</th><td><b>Resolute AI</b>, computer vision intern: real-time YOLO systems on CCTV feeds.</td></tr>
+    <tr><th>Jan 2024 – Mar 2025</th><td><b>VNIT Nagpur</b>, research intern under Dr. Ankit Bhurane: audio classification of loan recordings (86% accuracy).</td></tr>
+  </table>
+
+  <h3>Awards</h3>
+  <ul>
+    <li>Winner, Case-Based Hackathon, IIT Roorkee (2025)</li>
+    <li>2nd place, SpeedEye, NPCI AI Hackathon @ IIT Roorkee (2025)</li>
+    <li>3rd place, upcharAI, National Hackathon, IIM Indore (2025)</li>
+  </ul>
+</section>
+
+<img class="banner" src="banner.png" alt="Snow-capped Himalayan peaks">
+
+<footer>© 2026 Shreeyans Arora</footer>
+
+</main>
+</body>
+</html>
