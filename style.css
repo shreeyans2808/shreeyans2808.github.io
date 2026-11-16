@@ -3,7 +3,12 @@ body {
   font-weight: 300;
   line-height: 1.65;
   color: #333;
-  background: #fff url("bg.jpg") center top / cover scroll no-repeat;
+  background-color: #fff;
+  background-image: url("bg.jpg"), url("bg2.jpg");
+  background-position: center top, center bottom;
+  background-size: 100% auto, 100% auto;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply, multiply;
   margin: 0;
   padding-top: 4rem;
 }
