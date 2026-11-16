@@ -3,7 +3,8 @@ body {
   font-weight: 500;
   line-height: 1.65;
   color: #0b1118;
-  text-shadow: 0 0 4px rgba(255,255,255,0.85), 0 0 1px rgba(255,255,255,0.9);
+  letter-spacing: normal;
+  word-spacing: normal;
   background: #fff url("bg3.jpg") center top / 100% auto repeat-y;
   margin: 0;
   padding-top: 4rem;
