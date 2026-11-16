@@ -3,7 +3,7 @@ body {
   font-weight: 300;
   line-height: 1.65;
   color: #333;
-  background: #fff url("bg2.jpg") center top / 100% auto repeat-y;
+  background: #fff url("bg3.jpg") center top / 100% auto repeat-y;
   margin: 0;
   padding-top: 4rem;
 }
@@ -17,7 +17,7 @@ a:hover { text-decoration: underline; }
   z-index: 10;
 }
 #top .inner {
-  max-width: 930px; margin: 0 auto; padding: 0.9rem 1rem;
+  max-width: none; margin: 0; padding: 0.9rem 6vw;
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
   font-size: 0.95rem;
 }
@@ -25,7 +25,7 @@ a:hover { text-decoration: underline; }
 #top nav a { margin-left: 1.1rem; color: #555; }
 #top nav a:hover { color: #0076df; text-decoration: none; }
 
-main { max-width: 930px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+main { max-width: none; margin: 0; padding: 1.5rem 6vw 4rem; }
 
 h1 { font-size: 2.4rem; font-weight: 400; margin: 0.5rem 0 0.2rem; }
 .desc { color: #666; margin: 0 0 1.5rem; }
@@ -70,7 +70,7 @@ footer { margin-top: 3rem; font-size: 0.85rem; color: #888; border-top: 1px soli
 .side { float: right; width: 160px; margin: 0 0 1rem 1.5rem; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
 .banner { display: block; width: 100%; height: auto; margin-top: 3rem; border-radius: 6px; }
 .center { display: block; width: 280px; max-width: 100%; margin: 0.5rem 0 0; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-.quote { margin: 3rem 0 0; padding: 0 1rem; border-left: 3px solid #0076df; font-size: 1.2rem; font-style: italic; color: #444; }
+.quote { margin: 3rem 0 0; padding: 0 1rem; text-align: center; font-size: 1.3rem; font-style: italic; color: #444; }
 .quote footer { margin: 0.3rem 0 0; padding: 0; border: 0; font-size: 0.85rem; font-style: normal; color: #888; }
 
 .topics { list-style: none; padding: 0; }
