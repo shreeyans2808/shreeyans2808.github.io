@@ -103,86 +103,92 @@
 <section id="auditkit">
   <h2>AuditKIT</h2>
   <p>
-    AuditKIT is a toolkit for auditing the safety of language models. It collects model evaluations into
-    one reusable tool, so the same audits can be run across different models. I built it at Lexsi Labs, and it
-    is described in an arXiv paper.
+    AuditKIT is a Python library for evaluating any AI model on any dataset with one API. Evaluation is usually
+    fragmented: academic benchmarks, LLM-as-a-judge, red-teaming and performance profiling each come with their
+    own tools. AuditKIT puts them behind a single call, so results can be compared across all of them.
+    I built it at Lexsi Labs.
   </p>
-  <p><a href="https://arxiv.org/abs/2610.22511">Paper</a> · <a href="https://github.com/Lexsi-Labs/AuditKIT">Code</a></p>
+  <ul>
+    <li><b>One pipeline:</b> dataset, adapter, model, metrics, result. A single <code>evaluate()</code> call runs it, and one model can be run across many datasets at once.</li>
+    <li><b>Many kinds of evaluation:</b> benchmarks (exact match, F1, BLEU, ROUGE), LLM-as-a-judge, code and format checks, RAG groundedness, hallucination, toxicity and bias, pairwise preference, agent and tool use, security, and performance.</li>
+    <li><b>Red-teaming:</b> built-in adversarial probes (prompt injection, jailbreaks, encoding tricks, over-refusal) with detectors for injection success and system-prompt leaks.</li>
+    <li><b>Any model:</b> ten backends, including OpenAI, Anthropic, Hugging Face, vLLM, LiteLLM and Groq, a deployed agent over HTTP, or any plain Python function.</li>
+    <li><b>Reproducible:</b> the core needs only the standard library, and every run gets a stable hash so results can be cached and compared.</li>
+  </ul>
+  <p><a href="https://arxiv.org/abs/2610.22511">Paper</a> · <a href="https://github.com/Lexsi-Labs/AuditKIT">Code</a> · <a href="https://auditkit.lexsi.ai/">Docs</a></p>
 </section>
 
 <section id="research">
   <h2>Research</h2>
 
   <h3>Topics of interest</h3>
-  <ul>
-    <li><b>Mechanistic interpretability and circuit discovery:</b> activation patching, necessity and sufficiency, probing, logit lens.</li>
-    <li><b>Efficient inference:</b> low-rank structure of attention and KV-cache compression.</li>
-    <li><b>Chain-of-thought faithfulness and LLM auditing:</b> causal interventions, LLM-as-a-judge, preference optimization, AuditKIT.</li>
-    <li><b>Safe robotics:</b> safety in task and motion planning.</li>
-    <li><b>Weather forecasting:</b> spatiotemporal deep learning and evaluation metrics for rainfall nowcasting.</li>
-    <li><b>Low-resource and Indic languages:</b> datasets, semantic representations, knowledge distillation.</li>
+  <ul class="topics">
+    <li><b>Mechanistic interpretability:</b> circuit discovery, activation patching, probing, logit lens</li>
+    <li><b>Efficient inference:</b> low-rank structure of attention, KV-cache compression</li>
+    <li><b>Faithfulness and auditing:</b> chain-of-thought faithfulness, causal interventions, LLM-as-a-judge</li>
+    <li><b>Safe robotics:</b> safety in task and motion planning</li>
+    <li><b>Weather forecasting:</b> spatiotemporal deep learning, evaluation metrics</li>
+    <li><b>Low-resource and Indic languages:</b> datasets, semantic representations, distillation</li>
   </ul>
 
-  <h3>Mechanistic interpretability</h3>
-  <p class="topic-note">Activation patching, circuit discovery, probing, logit lens, SAEs and transcoders, post-hoc explanations (LIME, SHAP).</p>
+  <h3>Projects</h3>
+
   <div class="entry">
     <div class="title">Circuit discovery for the IOI task on Llama 3.2 1B</div>
+    <div class="meta">Mechanistic interpretability · <a href="https://github.com/shreeyans2808/Llama_ioi_Circuit_Discovery">Code</a></div>
     <div>
-      A hand-written pipeline using layer-by-layer and token-by-token activation patching, without TransformerLens.
-      It found a candidate circuit of 7 MLP layers and 10 attention heads out of 80 components; the necessity
-      intervention cut the logit-difference score from 5.39 to 0.50. Comparisons with matched random baselines
-      showed a gap between necessity and sufficiency, and the layer-level analysis reproduced across three seeds.
-      <a href="https://github.com/shreeyans2808/Llama_ioi_Circuit_Discovery">Code</a>
-    </div>
-  </div>
-  <div class="entry">
-    <div class="title">Architectural determinants of KV-cache compressibility in transformer language models</div>
-    <div>
-      SVD-based low-rank approximations of Key/Value projections across eight language models, used to find how far
-      the KV cache can be compressed without retraining. QK-norm and grouped-query attention let models keep only
-      24–35% of hidden-state width with no accuracy loss, and compressed caches transferred in agentic handoffs.
+      I wrote the whole circuit-discovery pipeline by hand, using layer-by-layer and token-by-token activation
+      patching on Indirect Object Identification, with no TransformerLens or other interpretability library.
+      From 80 components (MLP layers and attention heads), logit-difference thresholds picked out a candidate
+      circuit of 7 MLP layers and 10 attention heads. Removing it cut the task score from 5.39 to 0.50.
+      Against matched random baselines, the chosen components were far more important than random ones, but
+      the results exposed a gap between necessity and sufficiency.
+      The layer-level results held across three seeds, on a laptop GPU (Apple MPS) at about 2.5 GB of memory.
     </div>
   </div>
 
-  <h3>AI safety and faithfulness</h3>
-  <p class="topic-note">Chain-of-thought faithfulness, LLM-as-a-judge, agentic safety, sycophancy, causal intervention, prompt injection.</p>
   <div class="entry">
-    <div class="title">Chain-of-thought faithfulness in financial LLMs <span class="meta">(Lexsi Labs, ongoing)</span></div>
+    <div class="title">Architectural determinants of KV-cache compressibility</div>
+    <div class="meta">Efficient inference</div>
     <div>
-      Auditing five models by comparing internal signals (linear probes, top-k logit-lens tracking, elicited
-      probabilities, an independent judge) with their generated explanations. I also developed and evaluated
-      IV-DPO and CF-DPO preference-optimization pipelines to improve internal-verbal alignment.
-    </div>
-  </div>
-  <div class="entry">
-    <div class="title">Legal chain-of-thought faithfulness</div>
-    <div>
-      A counterfactual audit of whether models consult the sources they cite. See
-      <a href="#publications">"Cited but Not Consulted"</a>.
+      How far can a transformer's KV cache be compressed without retraining? I applied SVD-based optimal
+      low-rank approximations to the Key and Value projection matrices of eight language models to find the
+      safe limit. Models with QK-norm and grouped-query attention kept only 24–35% of the hidden-state width
+      with no accuracy loss. I also used the singular-value structure to see which directions matter for
+      decisions, and checked that compressed caches still work when one agent hands its context to another.
     </div>
   </div>
 
-  <h3>Safe robotics</h3>
-  <p class="topic-note">Task and motion planning, safety in robotic devices.</p>
   <div class="entry">
-    <div class="title">Agyeya workshop <span class="meta">(ongoing, mentor: Dr. Pulkit Verma)</span></div>
-    <div>Safety in task and motion planning for robotic devices.</div>
-  </div>
-
-  <h3>Earth science and forecasting</h3>
-  <div class="entry">
-    <div class="title">Rainfall nowcasting <span class="meta">(MBZUAI, with Dr. Utkarsh Mall; submitted to CVPR)</span></div>
+    <div class="title">Chain-of-thought faithfulness in financial LLMs</div>
+    <div class="meta">Lexsi Labs · <span class="tag">ongoing</span></div>
     <div>
-      Short-term weather prediction over the Indian subcontinent using INSAT 3D-R satellite data,
-      including a new metric for loss at long lead times.
+      Do a model's written explanations reflect what it actually computes? I audited five models on financial
+      decision-making by comparing their internal signals (linear probes, top-k logit-lens tracking, elicited
+      probabilities) and an independent judge against the chain-of-thought they produced. I also built and
+      evaluated two preference-optimization pipelines, IV-DPO and CF-DPO, to bring internal and verbal reasoning
+      closer together. Chain-of-thought turned out to have weak causal influence on answers, and I diagnosed
+      where the methods fall short (diluted preference pairs, limits of the metrics).
     </div>
   </div>
 
-  <h3>Other interests</h3>
-  <ul>
-    <li><b>Low-resource and Indic languages:</b> dataset availability, semantic representation learning, knowledge distillation.</li>
-    <li><b>Optimization and training dynamics:</b> parameter-efficient fine-tuning (PEFT/QLoRA), causal discovery, weight initialization.</li>
-  </ul>
+  <div class="entry">
+    <div class="title">Safety in task and motion planning for robotic devices</div>
+    <div class="meta">Agyeya workshop, mentor: Dr. Pulkit Verma · <span class="tag">ongoing</span></div>
+    <div>
+      A three-month research mentorship on making task and motion planners for robots behave safely.
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="title">Rainfall nowcasting over the Indian subcontinent</div>
+    <div class="meta">MBZUAI, with Dr. Utkarsh Mall · <span class="tag">submitted to CVPR</span></div>
+    <div>
+      Short-term rainfall prediction from INSAT 3D-R satellite imagery. I curated and preprocessed large
+      geospatial and meteorological datasets from MOSDAC, experimented with deep learning architectures for
+      atmospheric dynamics, and developed a new metric that measures how much accuracy is lost at long lead times.
+    </div>
+  </div>
 </section>
 
 <section id="software">

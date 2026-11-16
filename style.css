@@ -3,7 +3,7 @@ body {
   font-weight: 300;
   line-height: 1.65;
   color: #333;
-  background: #fff;
+  background: #fff url("bg.jpg") center top / cover fixed no-repeat;
   margin: 0;
   padding-top: 4rem;
 }
@@ -13,7 +13,7 @@ a:hover { text-decoration: underline; }
 /* top bar */
 #top {
   position: fixed; top: 0; left: 0; right: 0;
-  background: #fff; border-bottom: 1px solid #e5e5e5;
+  background: rgba(255,255,255,0.85); border-bottom: 1px solid #e5e5e5;
   z-index: 10;
 }
 #top .inner {
@@ -25,7 +25,7 @@ a:hover { text-decoration: underline; }
 #top nav a { margin-left: 1.1rem; color: #555; }
 #top nav a:hover { color: #0076df; text-decoration: none; }
 
-main { max-width: 930px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+main { max-width: 930px; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; background: rgba(255,255,255,0.72); }
 
 h1 { font-size: 2.4rem; font-weight: 400; margin: 0.5rem 0 0.2rem; }
 .desc { color: #666; margin: 0 0 1.5rem; }
@@ -72,3 +72,8 @@ footer { margin-top: 3rem; font-size: 0.85rem; color: #888; border-top: 1px soli
 .center { display: block; width: 280px; max-width: 100%; margin: 0.5rem 0 0; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
 .quote { margin: 3rem 0 0; padding: 0 1rem; border-left: 3px solid #0076df; font-size: 1.2rem; font-style: italic; color: #444; }
 .quote footer { margin: 0.3rem 0 0; padding: 0; border: 0; font-size: 0.85rem; font-style: normal; color: #888; }
+
+.topics { list-style: none; padding: 0; }
+.topics li { margin-bottom: 0.3rem; }
+code { font-size: 0.9em; background: rgba(0,0,0,0.05); padding: 0 0.25rem; border-radius: 3px; }
+@media (max-width: 640px) { body { background-attachment: scroll; } }
