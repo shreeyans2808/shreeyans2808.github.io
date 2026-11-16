@@ -1,6 +1,6 @@
 body {
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.65;
   color: #0b1118;
   letter-spacing: normal;
@@ -39,7 +39,7 @@ b, strong { font-weight: 700; }
 /* profile photo */
 .profile { float: right; width: 250px; margin: 0 0 1rem 2rem; text-align: right; }
 .profile img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-.profile p { font-size: 0.9rem; font-weight: 500; color: #0b1118; margin: 0.4rem 0 0; line-height: 1.4; }
+.profile p { font-size: 0.9rem; font-weight: 400; color: #0b1118; margin: 0.4rem 0 0; line-height: 1.4; }
 .clear { clear: both; }
 
 /* news */
@@ -54,7 +54,7 @@ table.news td { padding: 0.35rem 0; vertical-align: top; }
 /* entries */
 .entry { margin-bottom: 1.2rem; }
 .entry .title { font-weight: 700; }
-.entry .meta { color: #0b1118; font-weight: 500; font-size: 0.92rem; }
+.entry .meta { color: #0b1118; font-weight: 400; font-size: 0.92rem; }
 .tag { font-size: 0.78rem; border: 1px solid #0076df; color: #0076df; border-radius: 3px; padding: 0 0.35rem; margin-right: 0.3rem; }
 .topic-note { color: #0b1118; font-size: 0.92rem; margin: 0 0 0.6rem; }
 ul { padding-left: 1.2rem; margin: 0 0 1rem; }
@@ -62,7 +62,7 @@ li { margin-bottom: 0.4rem; }
 
 .highlight { border-left: 3px solid #0076df; padding: 0.6rem 1rem; margin-bottom: 1rem; }
 
-footer { margin-top: 3rem; font-size: 0.9rem; font-weight: 500; color: #0b1118; border-top: 1px solid #0b1118; padding-top: 1rem; }
+footer { margin-top: 3rem; font-size: 0.9rem; font-weight: 400; color: #0b1118; border-top: 1px solid #0b1118; padding-top: 1rem; }
 
 @media (max-width: 640px) {
   .profile { float: none; margin: 0 auto 1.5rem; text-align: center; }
@@ -72,8 +72,8 @@ footer { margin-top: 3rem; font-size: 0.9rem; font-weight: 500; color: #0b1118; 
 .side { float: right; width: 160px; margin: 0 0 1rem 1.5rem; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
 .banner { display: block; width: 100%; height: auto; margin-top: 3rem; border-radius: 6px; }
 .center { display: block; width: 280px; max-width: 100%; margin: 0.5rem 0 0; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-.quote { margin: 3rem 0 0; padding: 0 1rem; text-align: center; font-size: 1.3rem; font-style: italic; font-weight: 600; color: #0b1118; }
-.quote footer { margin: 0.3rem 0 0; padding: 0; border: 0; font-size: 0.9rem; font-style: normal; font-weight: 500; color: #0b1118; }
+.quote { margin: 3rem 0 0; padding: 0 1rem; text-align: center; font-size: 1.3rem; font-style: italic; font-weight: 400; color: #0b1118; }
+.quote footer { margin: 0.3rem 0 0; padding: 0; border: 0; font-size: 0.9rem; font-style: normal; font-weight: 400; color: #0b1118; }
 
 .topics { list-style: none; padding: 0; }
 .topics li { margin-bottom: 0.3rem; }
