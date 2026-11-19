@@ -7,6 +7,13 @@
   <meta name="description" content="Shreeyans Arora: undergraduate student researching interpretability, AI safety, and low-resource languages. Looking for research internships and fellowships.">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme");
+      if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
 </head>
 <body>
 
@@ -59,6 +66,12 @@
     <a href="https://pulkitverma.net/">Dr. Pulkit Verma</a>, working on safety in task and motion planning for
     robotic devices. I also work with <a href="https://lexsi.ai">Lexsi Labs</a> (Pratinav Seth) on AI safety
     and with MBZUAI (Dr. Utkarsh Mall) on weather forecasting.
+  </p>
+  <p>
+    Safety runs through all of this. I am interested in how agentic systems (models that plan, use tools and act
+    over many steps) can fail, and in how to audit and constrain them, from evaluating tool use to red-teaming.
+    I am also drawn to the physical side: safe task and motion planning for robots, where mistakes have
+    real-world consequences, and knowing when an autonomous system can be trusted to act on its own.
   </p>
   <p><b>What I am currently curious about:</b></p>
   <ul>
@@ -272,5 +285,16 @@
 <footer>© 2026 Shreeyans Arora</footer>
 
 </main>
+
+<button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <span class="icon-moon">&#9790;</span><span class="icon-sun">&#9728;</span>
+</button>
+<script>
+  document.getElementById("theme-toggle").addEventListener("click", function () {
+    var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  });
+</script>
 </body>
 </html>

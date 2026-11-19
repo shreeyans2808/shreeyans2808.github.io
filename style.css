@@ -78,3 +78,36 @@ footer { margin-top: 3rem; font-size: 0.9rem; font-weight: 400; color: #0b1118; 
 .topics { list-style: none; padding: 0; }
 .topics li { margin-bottom: 0.3rem; }
 code { font-size: 0.9em; }
+
+/* theme toggle */
+#theme-toggle {
+  position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 20;
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  border: 1px solid #0b1118; background: rgba(255,255,255,0.9); color: #0b1118;
+  font-size: 1.2rem; line-height: 1; cursor: pointer;
+}
+#theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] #theme-toggle .icon-sun { display: inline; }
+html[data-theme="dark"] #theme-toggle .icon-moon { display: none; }
+
+/* dark mode */
+html[data-theme="dark"] body {
+  color: #e6edf3;
+  background: #0d131b url("bg3-dark.jpg") center top / 100% auto repeat-y;
+}
+html[data-theme="dark"] a { color: #6cb6ff; }
+html[data-theme="dark"] #top { background: rgba(13,19,27,0.88); border-bottom-color: #2b3644; }
+html[data-theme="dark"] #top nav a,
+html[data-theme="dark"] .desc,
+html[data-theme="dark"] .profile p,
+html[data-theme="dark"] table.news th,
+html[data-theme="dark"] .entry .meta,
+html[data-theme="dark"] .topic-note,
+html[data-theme="dark"] .quote,
+html[data-theme="dark"] .quote footer,
+html[data-theme="dark"] footer { color: #e6edf3; }
+html[data-theme="dark"] #top nav a:hover { color: #6cb6ff; }
+html[data-theme="dark"] footer { border-top-color: #e6edf3; }
+html[data-theme="dark"] .tag { border-color: #6cb6ff; color: #6cb6ff; }
+html[data-theme="dark"] .highlight { border-left-color: #6cb6ff; }
+html[data-theme="dark"] #theme-toggle { background: rgba(13,19,27,0.9); color: #e6edf3; border-color: #e6edf3; }
